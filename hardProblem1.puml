@@ -1,0 +1,45 @@
+@startuml hardProblem1
+' ==== tidy white diagram ====
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam defaultTextAlignment center
+skinparam activity {
+  BackgroundColor white
+  BorderColor black
+  RoundCorner 15
+}
+skinparam activityDiamond {
+  BackgroundColor white
+  BorderColor black
+  RoundCorner 20
+}
+
+start
+:yes = 0;
+:no = 0;
+
+:i = 0;
+while (i < 3?)
+  :j = 0;
+  while (j < 2?)
+    if (i == j?) then (yes)
+      :yes++;
+    else
+      if (j == 1?) then (yes)
+        :no++;
+      endif
+    endif
+    :j++;
+  endwhile
+  :i++;
+endwhile
+
+:printf("Yes: %d\\n", yes);
+:printf("No: %d\\n", no);
+stop
+
+note right
+  Cyclomatic Complexity = 5
+  (2 loop tests + 2 if tests + baseline)
+end note
+@enduml
