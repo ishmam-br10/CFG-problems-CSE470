@@ -1,0 +1,30 @@
+@startuml problem3
+' ---------- style ----------
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam defaultTextAlignment center
+skinparam activity {
+  BackgroundColor white
+  BorderColor black
+}
+
+' ---------- control‑flow graph ----------
+start
+: i = 0;
+while (i < 2?) is (true)
+  : j = 0;
+  while (j < 2?) is (true)
+    : printf("%d %d\n", i, j);
+    : j++;
+  endwhile (false)
+  : i++;
+endwhile (false)
+: printf("End\n");
+stop
+
+' ---------- complexity ----------
+note right
+  Cyclomatic Complexity = 3
+  (2 loop decisions + baseline path)
+end note
+@enduml
