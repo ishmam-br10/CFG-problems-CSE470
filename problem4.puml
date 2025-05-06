@@ -1,0 +1,35 @@
+@startuml problem4
+' ---------- style ----------
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam defaultTextAlignment center
+skinparam activity {
+  BackgroundColor white
+  BorderColor black
+}
+
+' ---------- control‑flow graph ----------
+start
+: i = 0;
+while (i < 5?) is (true)
+  if (i == 2?) then (continue)
+    : i++;        ' increment before next test
+    repeat        ' jump to the while‑test
+  else
+    if (i == 4?) then (break)
+      break
+    else
+      : printf("%d\n", i);
+    endif
+    : i++;        ' normal increment
+  endif
+endwhile (false)
+: printf("Bye\n");
+stop
+
+' ---------- complexity ----------
+note right
+  Cyclomatic Complexity = 4  
+  while (1) + if (2) + baseline (1)
+end note
+@enduml
