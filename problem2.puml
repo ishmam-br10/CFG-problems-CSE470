@@ -1,0 +1,29 @@
+@startuml problem2
+' --------- style ----------
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam defaultTextAlignment center
+skinparam activity {
+  BackgroundColor white
+  BorderColor black
+}
+' --------- CFG ----------
+start
+: i = 0;
+while (i < 3?) is (true)
+  if (i % 2 == 0?) then (even)
+    : printf("Even\n");
+  else (odd)
+    : printf("Odd\n");
+  endif
+  : i++;
+endwhile (false)
+: printf("Done\n");
+stop
+
+' --------- complexity ----------
+note right
+  Cyclomatic Complexity = 3
+  (while = 1, if = 1, baseline = 1)
+end note
+@enduml

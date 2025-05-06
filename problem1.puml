@@ -1,0 +1,27 @@
+@startuml problem1
+' ---------- visual settings ----------
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam defaultTextAlignment center
+skinparam activity {
+  BackgroundColor white
+  BorderColor black
+}
+
+' ---------- control‑flow graph ----------
+start
+: x = 5;
+if (x > 0) then (true)
+  : x = x + 1;
+else (false)
+  : x = x - 1;
+endif
+: printf("%d", x);
+stop
+
+' ---------- complexity note ----------
+note right
+  Cyclomatic Complexity = 2
+  (one decision node + one baseline path)
+end note
+@enduml
