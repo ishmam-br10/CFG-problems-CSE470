@@ -1,0 +1,41 @@
+@startuml problem5
+' -------- visual hygiene --------
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam defaultTextAlignment center
+skinparam activity {
+  BackgroundColor white
+  BorderColor black
+  RoundCorner 15
+}
+skinparam activityDiamond {
+  BackgroundColor white
+  BorderColor black
+  RoundCorner 20
+}
+
+' -------- control‑flow graph --------
+start
+: x = 0;
+
+while (x < 3?) is (true)
+  if (x == 0?) then (yes)
+    : printf("Zero\n");
+  else
+    if (x == 1?) then (yes)
+      : printf("One\n");
+    else
+      : printf("Other\n");
+    endif
+  endif
+  : x++;
+endwhile (false)
+
+: printf("Loop finished\n");
+stop
+
+note right
+  Cyclomatic Complexity = 4
+  (while‑test + 2 nested if tests + baseline)
+end note
+@enduml
