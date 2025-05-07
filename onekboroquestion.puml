@@ -1,0 +1,67 @@
+@startuml CFG_myFunction
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam defaultTextAlignment center
+skinparam activity {
+  BackgroundColor white
+  BorderColor black
+  RoundCorner 15
+}
+skinparam activityDiamond {
+  BackgroundColor white
+  BorderColor black
+  RoundCorner 20
+}
+
+start
+: x = 10;
+: y = 20;
+
+if (x > 5?) then (yes)
+  if (y > 15?) then (yes)
+    : print("x and y are large");
+  else (no)
+    : print("x is large, but y is not");
+  endif
+else (no)
+  if (y > 15?) then (yes)
+    : print("y is large, but x is not");
+  else (no)
+    : print("neither x nor y is large");
+  endif
+endif
+
+:i = 0;
+while (i < x?) is (true)
+  :j = 0;
+  :flag = false;
+  while (j < y?) is (true)
+    if (i + j > 15?) then (yes)
+      :print("sum is large");
+      :flag = true;
+      break
+    else (no)
+      :j++;
+    endif
+  endwhile (false)
+
+  if (flag == false?) then (yes)
+    :print("sum is not large");
+  endif
+
+  :i++;
+endwhile (false)
+
+if (x > y?) then (yes)
+  :a = x;
+else (no)
+  :a = y;
+endif
+
+stop
+
+note right
+  Cyclomatic Complexity = 8  
+  (7 decision points + 1 baseline path)
+end note
+@enduml
