@@ -1,0 +1,49 @@
+@startuml quiz1q1
+' ---------- plain‑white, no gimmicks ----------
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam defaultTextAlignment center
+skinparam activity {
+  BackgroundColor white
+  BorderColor black
+  RoundCorner 15
+}
+skinparam activityDiamond {
+  BackgroundColor white
+  BorderColor black
+  RoundCorner 20
+}
+
+start
+:x = 5;
+:n = 2;
+
+while (x > n?) 
+  :x = x - 1;
+endwhile
+
+:checkSign(x);
+
+' ---- inlined body of checkSign ----
+if (x > 0?) then (pos)
+  :print("Positive");
+else
+  if (x == 0?) then (zero)
+    :print("Zero");
+  else (neg)
+    :print("Negative");
+  endif
+endif
+
+:print("THE END");
+stop
+
+note right
+  Cyclomatic complexity = 4  
+  • while test = 1  
+  • if (x > 0) = 1  
+  • nested if (x == 0) = 1  
+  • baseline path = 1  
+  Total = 4
+end note
+@enduml
